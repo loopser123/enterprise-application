@@ -11,7 +11,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.8.RELEASE</version>
-		<relativePath /> 
+		<relativePath/> 
 	</parent> 
   <dependencies>
       <dependency> 
@@ -35,8 +35,8 @@
 
   <modules>  
 	<module>core</module>
-    <module>adapters</module>
-    <module>common</module>
     <module>configuration</module>
+    <module>adapters</module>
+    <module>commons</module>
   </modules>
 </project>
