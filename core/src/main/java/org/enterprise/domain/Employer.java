@@ -1,4 +1,4 @@
-package org.enterprise.entity;
+package org.enterprise.domain;
 
 import lombok.Data;
 
