@@ -1,6 +1,4 @@
-package org.enterprise.entity;
-
-import java.util.List;
+package org.enterprise.domain;
 
 import lombok.Data;
 
@@ -11,6 +9,7 @@ public class Project {
 	private String name; 
 	private String customer; 
 	private Double budget; 
-	List<Employer> employers; 
-
+	private Team team; 
+	private boolean atClientSite; 
+	
 }

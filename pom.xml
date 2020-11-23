@@ -35,8 +35,8 @@
 
   <modules>  
 	<module>core</module>
-    <module>entrypoint</module>
-    <module>dataprovider</module>
+    <module>adapters</module>
+    <module>common</module>
     <module>configuration</module>
   </modules>
 </project>
