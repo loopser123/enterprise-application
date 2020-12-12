@@ -3,14 +3,19 @@ package org.enterprise.domain;
 import lombok.Data;
 
 @Data
-public class Employer {
+public abstract class Employer {
+	
+	private EmployerId id; 
 	private String name; 
 	private String lastName; 
 	private String adresse; 
 	private double salary; 
 	
 	
-	public double relaxSalary() {
-		return this.salary * 1.1; 
+	
+	public abstract int workedDaysPerMonth(); 
+	
+	public class EmployerId { 
+		Long id; 
 	}
 }

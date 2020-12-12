@@ -6,10 +6,17 @@ import lombok.Data;
 @Data
 public class Project {
 	
+	private ProjectId projectId; 
 	private String name; 
 	private String customer; 
-	private Double budget; 
 	private Team team; 
-	private boolean atClientSite; 
+	private Client client; 
 	
+	public void setClient(Client client) {
+		client.getProjects().add(this); 
+	}
+	
+	public static class ProjectId { 
+		Long id; 
+	}
 }

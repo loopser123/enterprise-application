@@ -1,11 +1,11 @@
 package org.enterprise.application.port.out;
 
-import java.util.List;
+import java.util.Set;
 
 import org.enterprise.domain.Project;
 
 public interface LoadProjectsPort {
 	
-	List<Project> findAllProjects(); 
+	Set<Project> findAllProjects(); 
 
 }
