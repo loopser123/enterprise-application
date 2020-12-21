@@ -8,7 +8,6 @@ public class Project {
 	
 	private ProjectId projectId; 
 	private String name; 
-	private String customer; 
 	private Team team; 
 	private Client client; 
 	

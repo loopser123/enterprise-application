@@ -9,6 +9,7 @@ import lombok.Data;
 public class Team {
 	
 	private TeamId teamId; 
+	private String team_name; 
 	private Set<Employer> teaMembers = new HashSet<Employer>(); 
 	
 	
