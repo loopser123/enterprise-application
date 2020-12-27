@@ -10,14 +10,12 @@ import org.springframework.context.ApplicationContext;
 @EntityScan(basePackages = {"org.enterprise.persistence.entities"})
 public class Application 
 {
+	
     public static void main( String[] args )
     {
     	 ApplicationContext ctx = SpringApplication.run(Application.class, args);
     	 System.out.println("here is the jpa "+ctx.containsBean("frontControllerConfiguration"));
     	 System.out.println("Another stuff "+ctx.containsBean("employeeJpaEntity")); 
-    	 for (String beanName : ctx.getBeanDefinitionNames()) {
-             System.out.println(beanName);
-         }
     	 
     }
 }	  

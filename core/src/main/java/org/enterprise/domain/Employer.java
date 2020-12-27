@@ -1,8 +1,5 @@
 package org.enterprise.domain;
 
-import lombok.Data;
-
-@Data
 public abstract class Employer {
 	
 	private EmployerId id; 
@@ -11,11 +8,25 @@ public abstract class Employer {
 	private String adresse; 
 	private double salary; 
 	
+	public Employer(Long id , String name , String lastname , String adresse,double salary) {
+		this.id = new EmployerId(id); 
+		this.name = name; 
+		this.lastName=lastname; 
+		this.adresse=adresse; 
+		this.salary=salary; 
+	}
+	
 	
 	
 	public abstract int workedDaysPerMonth(); 
 	
 	public class EmployerId { 
 		Long id; 
+		public EmployerId(Long id) {
+			this.id = id; 
+		}
+		public Long getId() {
+			return this.id; 
+		}
 	}
 }

@@ -7,8 +7,6 @@ import java.util.Set;
 import lombok.Data;
 @Data
 public class ProjectInventory {
-	
-
 
 	Set<Project> projects = new HashSet<Project>(); 
 	
@@ -23,6 +21,5 @@ public class ProjectInventory {
 	public boolean isAffectToAProject(Employer employer) {
 		return false; 
 	}
-	
 	
 }
