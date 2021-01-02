@@ -7,7 +7,7 @@ import java.util.Set;
 import lombok.Data;
 @Data
 public class ProjectInventory {
-
+	// apply singleton to this class
 	Set<Project> projects = new HashSet<Project>(); 
 	
 	public boolean add(Project project) {

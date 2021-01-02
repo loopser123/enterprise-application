@@ -7,8 +7,11 @@ import org.enterprise.application.port.out.LoadTeamPort;
 import org.enterprise.domain.Employer;
 import org.enterprise.domain.ProjectInventory;
 import org.enterprise.domain.Team;
+import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
+
+@Component
 @RequiredArgsConstructor
 public class AffectEmployerToTeamService implements AffectEmployerToTeamUseCase {
 	
@@ -18,7 +21,6 @@ public class AffectEmployerToTeamService implements AffectEmployerToTeamUseCase 
 	// TODO : add the rule that corresponds to techLeader-and-bizDev-and-designer can be affected to
 	// multiple projects
 	public void affectEmployerToTeamUseCase(AffectEmployerCommand command) {
-				
 		Employer employer = employerLoader.getEmployer(command.getEmployer_id());
 		Team team = teamLoader.getTeam(command.getTeam_id()); 
 		ProjectInventory projectInventory = new ProjectInventory(); 

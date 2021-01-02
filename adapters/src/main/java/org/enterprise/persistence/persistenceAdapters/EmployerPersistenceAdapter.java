@@ -1,5 +1,6 @@
 package org.enterprise.persistence.persistenceAdapters;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -14,22 +15,30 @@ import org.enterprise.persistence.entities.DeveloperJpaEntity;
 import org.enterprise.persistence.entities.EmployeeJpaEntity;
 import org.enterprise.persistence.repositories.EmployerJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 @Data
+@Component
 public class EmployerPersistenceAdapter implements LoadEmployerPort {
 
 	private final EmployerJpaRepository employerJpaRepository;
+	private final DeveloperPersistenceAdapter developerAdapter; 
+	private final BusinessDevelperPersistenceAdapter businessAdapter; 
 
 	@Autowired
-	public EmployerPersistenceAdapter(EmployerJpaRepository employerJpaRepository) {
+	public EmployerPersistenceAdapter(EmployerJpaRepository employerJpaRepository,
+			DeveloperPersistenceAdapter developerAdapter, 
+			BusinessDevelperPersistenceAdapter businessAdapter) {
 		this.employerJpaRepository = employerJpaRepository;
+		this.developerAdapter=developerAdapter; 
+		this.businessAdapter=businessAdapter; 
 	}
 
 	@Override
 	public Set<Employer> getEmployers() {
-		Set<Employer> employers = null;
+		Set<Employer> employers = new HashSet<Employer>();
 		BusinessDeveloper businnesDeveloper = null;
 		Developer developer = null;
 		List<EmployeeJpaEntity> abstractEmployers = employerJpaRepository.findAll();
@@ -64,4 +73,21 @@ public class EmployerPersistenceAdapter implements LoadEmployerPort {
 				absEmployee.get().getAdress(), absEmployee.get().getSalary(),
 				((DeveloperJpaEntity) absEmployee.get()).getVelocity());
 	}
+	
+	
+	public Employer employerJpaToEmployer(EmployeeJpaEntity employerJpa) {
+		if(employerJpa instanceof BusinessDeveloperJpaEntity) {
+			return businessAdapter.mapBusinessDevJpaToBusinessDev((BusinessDeveloperJpaEntity)employerJpa); 
+		}
+		return developerAdapter.mapDeveloperJpaToDeveloper((DeveloperJpaEntity)employerJpa); 
+	}
+	
+	public Set<Employer> employersJpaToEmployers(Set<EmployeeJpaEntity> employersJpa){
+		Set<Employer> employers = null; 
+		for(EmployeeJpaEntity e : employersJpa) {
+			employers.add(employerJpaToEmployer(e)); 
+		}
+		return employers; 
+	}
+	
 }

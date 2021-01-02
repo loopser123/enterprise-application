@@ -16,11 +16,9 @@ public abstract class Employer {
 		this.salary=salary; 
 	}
 	
-	
-	
 	public abstract int workedDaysPerMonth(); 
 	
-	public class EmployerId { 
+	public static class EmployerId { 
 		Long id; 
 		public EmployerId(Long id) {
 			this.id = id; 
